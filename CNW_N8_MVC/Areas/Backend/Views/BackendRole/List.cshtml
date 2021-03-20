@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Backend/Views/Shared/Backend.cshtml";
+}
+
+@using CNW_N8_MVC.Class;
+@model List<CNW_N8_MVC.Class.Role>
+
+
+<form>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header"><i class="fa fa-align-justify"></i> Danh sách loại người dùng</div>
+                <div class="card-body">
+                    <table class="table table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th>Mã loại người dùng</th>
+                                <th>Tên loại người dùng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(Role it in Model)
+                            {
+                                <tr>
+                                    <td>@it.Role_id</td>
+                                    <td>@it.Role_name</td>
+                                    <td><a style="color:red" href="@Url.Action("DeleteRole","BackendRole",new {@it.Role_id})">Xoá</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

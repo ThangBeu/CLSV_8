@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Backend/Views/Shared/Backend.cshtml";
+}
+
+@using CNW_N8_MVC.Class;
+@model List<CNW_N8_MVC.Class.Users_BE>
+<form>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header"><i class="fa fa-align-justify"></i> Danh sách người dùng</div>
+                <div class="card-body">
+                    <table class="table table-responsive-sm">
+
+                        <thead>
+
+                            <tr>
+                                <th>Mã Khách Hàng</th>
+                                <th>Tên Đăng Nhập</th>
+                                <th>Mật Khẩu</th>
+                                <th>Chức Vụ</th>
+                                <th>Họ và Tên</th>
+                                <th>Email</th>
+                                <th>Số Điện Thoại</th>
+                                <th>Địa Chỉ</th>
+                                <th>Điểm Tích Lũy</th>
+                                <th>Ưu Đãi</th>
+                                <th> </th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (Users_BE it in Model)
+                            {
+                                <tr>
+                                    <td>@it.User_id</td>
+                                    <td>@it.Username</td>
+                                    <td>@it.Password</td>
+                                    <td>@it.Role_name</td>
+                                    <td>@it.Full_name</td>
+                                    <td>@it.Email</td>
+                                    <td>@it.Phone</td>
+                                    <td>@it.Address</td>
+                                    <td>@it.Point</td>
+                                    <td>@it.Discount_value</td>
+                                    <td><a href="@Url.Action("Edit","BackendUser", new { @id = it.User_id})">Sửa</a></td>
+                                    <td><a style="color:red" href="@Url.Action("DeleteUser","BackendUser",new { @id = it.User_id})">Xoá</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
